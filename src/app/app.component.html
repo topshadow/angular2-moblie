@@ -1,0 +1,116 @@
+<!--未登录界面-->
+
+
+<!--登录后的界面-->
+<ion-menu side="left" id="menu" [content]="content">
+	<ion-content>
+		<ion-list no-border>
+			<ion-item *ngIf="user">
+				<ion-avatar item-left>
+					<img src="http://ionicframework.com/dist/preview-app/www/assets/img/thumbnail-totoro.png">
+				</ion-avatar>
+				<h2>{{user.username}}</h2>
+				<p>个性签名</p>
+				<button ion-button clear item-right>修改</button>
+			</ion-item>
+
+
+			<ion-list-header>
+				美站
+			</ion-list-header>
+
+			<button ion-item (click)="openPage(loginPages[0])">
+				<ion-icon name='planet' item-left></ion-icon>
+				美站欣赏
+				<ion-note item-right>
+					<ion-badge color="secondary">99+</ion-badge>
+				</ion-note>
+			</button>
+
+			<button ion-item (click)="openPage(loginPages[2])">
+				<ion-label>
+					友站
+				</ion-label>
+				<ion-icon name='body' item-left></ion-icon>
+			</button>
+
+			<ion-item>
+				<ion-icon name='leaf' item-left></ion-icon>
+				模块编辑
+				<ion-note item-right>
+					<ion-badge color="secondary">99+</ion-badge>
+				</ion-note>
+			</ion-item>
+
+			<ion-item>
+				<ion-icon name='flask' item-left></ion-icon>
+				荣誉排名
+				<ion-note item-right>
+					14
+				</ion-note>
+			</ion-item>
+		</ion-list>
+
+
+		<ion-list>
+			<ion-list-header>
+				管理
+			</ion-list-header>
+			<ion-item>
+				我的文件
+				<ion-icon name='color-wand' item-left></ion-icon>
+				<ion-note item-right>
+					<ion-badge color="secondary">99+</ion-badge>
+				</ion-note>
+			</ion-item>
+			<button ion-item (click)="openPage(loginPages[1])">
+			
+				<ion-label>
+					我的站点
+				</ion-label>
+				<ion-icon name='brush' item-left></ion-icon>
+			</button>
+			<ion-item>
+				<ion-icon name='wine' item-left></ion-icon>
+				域名管理
+				<ion-note item-right>
+					<ion-badge color="secondary">99+</ion-badge>
+				</ion-note>
+			</ion-item>
+		</ion-list>
+
+
+		<ion-list>
+			<ion-item>
+				<ion-icon name='beer' item-left></ion-icon>
+				个人信息
+				<ion-note item-right>修改</ion-note>
+			</ion-item>
+			<ion-item>
+				<ion-icon name='flash' item-left></ion-icon>
+				插件商城
+				<ion-note item-right></ion-note>
+			</ion-item>
+
+
+			<ion-list-header>
+				系统设置
+			</ion-list-header>
+
+			<ion-item>
+				<ion-icon name='book' item-left></ion-icon>
+				帮助
+				<ion-note item-right>Muggle-born</ion-note>
+			</ion-item>
+			<ion-item (click)="exit()">
+				<ion-icon name="power" color="danger" item-left></ion-icon>
+				退出
+				<ion-note item-right></ion-note>
+
+			</ion-item>
+		</ion-list>
+
+	</ion-content>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

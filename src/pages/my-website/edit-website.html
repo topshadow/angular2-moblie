@@ -1,0 +1,60 @@
+<ion-header>
+	<ion-navbar>
+		<ion-buttons start>
+			<button ion-button (click)="dismiss()">
+				<ion-icon name="md-close"></ion-icon>
+			</button>
+		</ion-buttons>
+		<ion-title>编辑网站</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content>
+	<!--{{website.val() }}-->
+	<!--当前页面-->
+	<ion-card>
+		<ion-card-header>当前页面:
+			<ion-select [(ngModel)]="currentPage">
+				<ion-option *ngFor="let page of website.pages" [value]="page">{{page.name}} | {{page.path}} </ion-option>
+			</ion-select>
+		</ion-card-header>
+		<ion-card-content>
+
+
+			<button ion-button full round (click)="addPage();">
+				添加页面</button>
+		</ion-card-content>
+	</ion-card>
+	<!--显示select 切换页面-->
+
+
+	<div [dragula]='"drag-part"' [dragulaModel]="currentPage.parts" class="col-xs-6">
+		<div *ngFor="let part of currentPage.parts">
+			<div [ngSwitch]="part.name">
+				<!--<theme1-navbar *ngSwitchCase=" 'theme1-navbar'"></theme1-navbar>-->
+				<img [src]="part.picture" class="img-responsive">
+
+			</div>
+		</div>
+	</div>
+
+	<div [dragula]='"drag-part"' [dragulaModel]="optionParts" class="col-xs-6">
+		<div *ngFor="let optionPart of optionParts">
+			<div [ngSwitch]="optionPart.name">
+				<!--<theme1-navbar *ngSwitchCase=" 'theme1-navbar'"></theme1-navbar>-->
+				<img [src]="optionPart.picture" class="img-responsive">
+			</div>
+		</div>
+
+	</div>
+
+	<ion-grid>
+		<ion-row>
+			<ion-col width-50>
+				<button ion-button color="primary" full round (click)="viewWebsite()">预览</button></ion-col>
+			<ion-col width-50>
+				<button ion-button color="primary" full round (click)="savePage()">保存</button>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
+</ion-content>

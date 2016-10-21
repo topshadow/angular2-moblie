@@ -1,0 +1,42 @@
+<ion-header>
+	<ion-navbar>
+		<ion-title>欢迎界面</ion-title>
+	</ion-navbar>
+</ion-header>
+
+<ion-content class="tutorial-page">
+
+
+
+	<div id="results"></div>
+
+
+	<ion-slides pager (ionDidChange)="isSlidesStop(slidesEl)" [options]="slidesOptions" #slidesEl>
+		<ion-slide *ngFor="let slide of slides">
+			<img [src]="slide.image" class="slide-image" />
+			<h2 class="slide-title" [innerHTML]="slide.title"></h2>
+			<p [innerHTML]="slide.description"></p>
+			<ion-toolbar>
+				<ion-buttons>
+					<button ion-button color="primary" (click)="slidesEl.slidePrev()">上一页</button>
+					<button ion-button color="primary" (click)="slidesEl.slideNext()">下一页</button>
+				</ion-buttons>
+			</ion-toolbar>
+		</ion-slide>
+		<ion-slide>
+			<ion-toolbar>
+			</ion-toolbar>
+			<img src="assets/images/ica-slidebox-img-4.png" class="slide-image" />
+			<h2 class="slide-title">十分期待 ?</h2>
+			<button ion-button large clear icon-right (click)="openPage(signInPage)">
+				登录
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+			<button ion-button large clear icon-right (click)="openPage(signUpPage)">
+			  注册
+			  <ion-icon name="arrow-forward"></ion-icon>
+		  </button>
+
+		</ion-slide>
+	</ion-slides>
+</ion-content>
